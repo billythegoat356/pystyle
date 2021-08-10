@@ -1,1 +1,0 @@
-Centrez un texte facilement!
