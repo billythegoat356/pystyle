@@ -1,24 +1,14 @@
-# billythegoat356
-
 # https://github.com/billythegoat356
 
-# Version : 2.1
+# Version : 2.2
 
 # <3
 
-
-from os import get_terminal_size
-
-
-
 def center(var: str, space: int = None, icon: str = " ", sep: bool = False):
-
-    if space is None:
-        space = (get_terminal_size().columns - max(int(len(v)/2) for v in var.splitlines())) / 2
-    
     if not sep:
         return "\n".join((icon * int(space)) + var for var in var.splitlines())
     else:
+        return "\n".join((icon * int(space)) + var + (icon * int(space)) for var in var.splitlines())
         return "\n".join((icon * int(space)) + var + icon * int(space) for var in var.splitlines())
 
 
