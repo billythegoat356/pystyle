@@ -1,6 +1,6 @@
 # https://github.com/billythegoat356
 
-# Version : 2.2
+# Version : 2.3
 
 # <3
 
@@ -10,7 +10,8 @@ from os import get_terminal_size
 
 def center(var: str, space: int = None, icon: str = " ", sep: bool = False):
     if not space:
-        space = (get_terminal_size().columns - len(var.splitlines()[int(len(var.splitlines())/2)])) / 2
+        space = (get_terminal_size().columns -
+                 len(var.splitlines()[int(len(var.splitlines())/2)])) / 2
 
     if not sep:
         return "\n".join((icon * int(space)) + var for var in var.splitlines())
@@ -33,3 +34,12 @@ def makebox(content: str):
     box += "|_" + ("_" * l) + "_|\n"
 
     return box
+
+
+def makesimplebox(content: str):
+    l = 1
+    for c in content.splitlines():
+        if len(c) > l:
+            l = len(c)
+    box = f"─{'═'*l}☆☆{'═'*l}─"
+    return box + "\n" + center(content, l) + "\n" + box
