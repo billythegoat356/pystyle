@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 0.2
+# Version : 0.3
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -182,14 +182,18 @@ class Colors:
     cyan_to_green = ["0;255;n"]
     cyan_to_blue = ["0;n;255"]
 
-    red_to_blue = _MakeColors._makergbcol(red_to_purple, purple_to_blue)
-    red_to_green = _MakeColors._makergbcol(red_to_yellow, yellow_to_green)
+    red_to_blue = ...
+    red_to_green = ...
 
-    green_to_blue = _MakeColors._makergbcol(green_to_cyan, cyan_to_blue)
-    green_to_red = _MakeColors._makergbcol(green_to_yellow, yellow_to_red)
+    green_to_blue = ...
+    green_to_red = ...
 
-    blue_to_red = _MakeColors._makergbcol(blue_to_purple, purple_to_red)
-    blue_to_green = _MakeColors._makergbcol(blue_to_cyan, cyan_to_green)
+    blue_to_red = ...
+    blue_to_green = ...
+
+    rainbow = ...
+
+    
 
     """ static colors """
 
@@ -274,15 +278,24 @@ class Colors:
             dbl_col += 20
             dbl_reversed_col -= 20
 
+    red_to_blue = _MakeColors._makergbcol(red_to_purple, purple_to_blue)
+    red_to_green = _MakeColors._makergbcol(red_to_yellow, yellow_to_green)
+
+    green_to_blue = _MakeColors._makergbcol(green_to_cyan, cyan_to_blue)
+    green_to_red = _MakeColors._makergbcol(green_to_yellow, yellow_to_red)
+
+    blue_to_red = _MakeColors._makergbcol(blue_to_purple, purple_to_red)
+    blue_to_green = _MakeColors._makergbcol(blue_to_cyan, cyan_to_green)
+
+    rainbow = _MakeColors._makerainbow(
+        red_to_green, green_to_blue, blue_to_red)
+
     for col in [
             red_to_blue, red_to_green,
             green_to_blue, green_to_red,
             blue_to_red, blue_to_green
     ]:
         dynamic_colors.append(col)
-
-    rainbow = _MakeColors._makerainbow(
-        red_to_green, green_to_blue, blue_to_red)
 
     dynamic_colors.append(rainbow)
 
