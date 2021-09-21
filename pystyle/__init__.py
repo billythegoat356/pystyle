@@ -2,12 +2,11 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 0.3
+# Version : 0.4
 
 # based on pyfade anc pycenter, R.I.P
 
 # <3
-
 
 
 from os import name as _name, system as _system, get_terminal_size as _terminal_size
@@ -146,7 +145,9 @@ class Colors:
 
     def DynamicRGB(r1: int, g1: int, b1: int, r2: int,
                    g2: int, b2: int) -> list: ...
+
     """ dynamic colors """
+
 
     black_to_white = ["m;m;m"]
     black_to_red = ["m;0;0"]
@@ -192,8 +193,6 @@ class Colors:
     blue_to_green = ...
 
     rainbow = ...
-
-    
 
     """ static colors """
 
@@ -452,7 +451,6 @@ class Colorate:
                     color_n = 0
             result = result + '\n' + resultL
         return result.strip()
-
 
 
 class Anime:
@@ -740,6 +738,20 @@ class Box:
         box += "|_" + ("_" * l) + "_|\n"
 
         return box
+
+    def DoubleCube(content: str) -> str:
+        l = 0
+        lines = content.splitlines()
+        for a in lines:
+            if len(a) > l:
+                l = len(a)
+        if l % 2 == 1:
+            l += 1
+        box = "╔═" + ("═" * l) + "═╗\n"
+        #box += "║ " + (" " * int(l / 2)) + (" " * int(l / 2)) + " ║\n"
+        for line in lines:
+            box += "║ " + line + (" " * int((l - len(line)))) + " ║\n"
+        box += "╚═" + ("═" * l) + "═╝\n"
 
     def Lines(content: str) -> str:
         # voir pour ajouter un argument pour personnaliser la ligne
