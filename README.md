@@ -20,14 +20,8 @@
 
 ## Install
 
-Bash:
 ```sh
 pip3 install pystyle
-```
-
-Batch:
-```bat
-pip install pystyle
 ```
 
 # FEATURES
