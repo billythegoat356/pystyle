@@ -33,12 +33,12 @@ pip install pystyle
 # FEATURES
 
   - Colorate text
-  - Colorate text with fade effect                        D
+  - Colorate text with fade effect
   - Animations
   - Writing effects
-  - Centered Text                     D
-  - Adding banners                    D
-  - Make boxes                        D
+  - Centered Text
+  - Adding banners
+  - Make boxes
   - Hide and Show Cursor
   - System Functions    
 
