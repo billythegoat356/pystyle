@@ -33,19 +33,48 @@ pip install pystyle
 # FEATURES
 
   - Colorate text
-  - Colorate text with Fade Effect                        D
+  - Colorate text with fade effect                        D
   - Animations
   - Writing effects
-  - Centered Text
+  - Centered Text                     D
   - Adding banners                    D
   - Make boxes                        D
+  - Hide and Show Cursor
   - System Functions    
 
 <br>
 
-## Fade Effect
+## Colorate text
+<img src="https://cdn.discordapp.com/attachments/882652381731504182/890179524451512330/unknown.png">
+<p><i><strong>Colorate some text easily.</strong></i></p>
+<br>
+
+```python
+from pystyle import Colors, Colorate
+text = "Hello world!"
+print(Colors.blue + text)
+# or
+print(Colorate.Color(Colors.blue, text, True))
+```
+
+<br>
+
+`Colors.blue` = color<br>
+`text` = text to be colored<br>
+`True` = end the coloring after (otherwise it will continue printing characters in the specified color)
+
+<br>
+
+Available functions are:
+  - Color (simply colorate a text)
+  - Error (make an error effect easily)
+
+
+<br>
+
+## Colorate text with fade effect    
 <img src="https://media.discordapp.net/attachments/888138903138213911/888143816836653116/pystleHor.png">
-<p><i><strong>Make a Fade effect.</strong></i></p>
+<p><i><strong>Make a fade effect.</strong></i></p>
 <br>
 
 ```python
@@ -69,7 +98,7 @@ Available effects are:
 
 <br>
  
-## Center Text
+## Center text
 <img src="https://media.discordapp.net/attachments/888138903138213911/888174929386799104/pycenter.png">
 <br>
 <p><i><strong>Center a text in the terminal.</strong></i></p>
@@ -96,7 +125,7 @@ Available modes are:
 
 <br><br>
 
-## Adding Banners
+## Adding banners
 <p><i><strong>Add a banner to another easily.</strong></i></p>
 <img src="https://media.discordapp.net/attachments/888138903138213911/888139239357816842/addbanner.png" width="479" height="222"/>
 
@@ -135,7 +164,7 @@ ____\||/____
 `text` = second banner<br>
 `4` = blank lines before adding the smallest banner to the biggest banner (default=0). Set to `True` to center it<br>
 
-## Making Boxes
+## Make boxes
 <p><i><strong>Make beautiful boxes easily!</strong></i></p>
 <br>
 ```python
