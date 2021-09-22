@@ -167,6 +167,7 @@ ____\||/____
 ## Make boxes
 <p><i><strong>Make beautiful boxes easily!</strong></i></p>
 <br>
+
 ```python
 from pystyle import Box
 print(Box.Lines("Hello, Welcome to Pystyle."))
@@ -174,6 +175,7 @@ print(Box.DoubleCube("Hello, Welcome to Pystyle."))
 ```
 
 Output:
+
 ```
 ─══════════════════════════☆☆══════════════════════════─
                Hello, Welcome to Pystyle.
