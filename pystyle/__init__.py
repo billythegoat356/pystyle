@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 0.5 BETA
+# Version : 0.6 BETA
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -763,6 +763,23 @@ class Box:
         Lines()                       |             create a text framed by two lines
 
     """
+
+    def Box(content: str, up_left: str, up_right: str, down_left: str, down_right: str, left_line: str, up_line: str, right_line: str, down_line: str) -> str:
+        l = 0
+        lines = content.splitlines()
+        for a in lines:
+            if len(a) > l:
+                l = len(a)
+        if l % 2 == 1:
+            l += 1
+        box = up_left + (up_line * l) + up_right + "\n"
+        #box += "║ " + (" " * int(l / 2)) + (" " * int(l / 2)) + " ║\n"
+        for line in lines:
+            box += left_line + " " + line + (" " * int((l - len(line)))) + " " + right_line + "\n"
+        box += down_left + (down_line * l) + down_right + "\n"
+        return box
+
+
     def SimpleCube(content: str) -> str:
         l = 0
         lines = content.splitlines()
@@ -780,18 +797,7 @@ class Box:
         return box
 
     def DoubleCube(content: str) -> str:
-        l = 0
-        lines = content.splitlines()
-        for a in lines:
-            if len(a) > l:
-                l = len(a)
-        if l % 2 == 1:
-            l += 1
-        box = "╔═" + ("═" * l) + "═╗\n"
-        #box += "║ " + (" " * int(l / 2)) + (" " * int(l / 2)) + " ║\n"
-        for line in lines:
-            box += "║ " + line + (" " * int((l - len(line)))) + " ║\n"
-        box += "╚═" + ("═" * l) + "═╝\n"
+        return Box.Box(content, "╔═", "═╗", "╚═", "═╝", "║", "═", "║", "═")
 
     def Lines(content: str) -> str:
         # voir pour ajouter un argument pour personnaliser la ligne
