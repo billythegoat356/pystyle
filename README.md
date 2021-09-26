@@ -106,7 +106,7 @@ print(Center.XCenter("Hello, Welcome to Pystyle."))
 <br>
 
 ```
-                                                Hello, Welcome to Pystyle.                                
+                                            Hello, Welcome to Pystyle.                                
 ```
 
 
