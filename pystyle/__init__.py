@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 0.4
+# Version : 0.5 BETA
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -145,9 +145,7 @@ class Colors:
 
     def DynamicRGB(r1: int, g1: int, b1: int, r2: int,
                    g2: int, b2: int) -> list: ...
-
     """ dynamic colors """
-
 
     black_to_white = ["m;m;m"]
     black_to_red = ["m;0;0"]
@@ -458,13 +456,13 @@ class Anime:
     """
     2 functions:
         Fade()                  |            make a small animation with a changing color text, using a dynamic color
-        Move()                  |            make a small animation moving the text
+        Move()                  |            make a small animation moving the text, available soon
+        Bar()                   |            a fully customizable charging bar
         Anime()                 |            a mix between Fade() and Move(), available soon
 
     """
 
-    def Fade(text: str, color: list, mode, time=True, interval=0.05, hide_cursor=True, enter: bool = False, speed: int = 1):
-        # sourcery skip: simplify-boolean-comparison
+    def Fade(text: str, color: list, mode, time=True, interval=0.05, hide_cursor: bool = True, enter: bool = False):
         if hide_cursor:
             Cursor.HideCursor()
 
@@ -482,7 +480,7 @@ class Anime:
             while True:
                 if passed is not False:
                     break
-                Anime._anime(text, color, mode, speed, interval)
+                Anime._anime(text, color, mode, interval)
                 ncolor = color[1:]
                 ncolor.append(color[0])
                 color = ncolor
@@ -491,21 +489,63 @@ class Anime:
             for _ in range(time):
                 if passed is not False:
                     break
-                Anime._anime(text, color, mode, speed, interval)
+                Anime._anime(text, color, mode, interval)
                 ncolor = color[1:]
                 ncolor.append(color[0])
                 color = ncolor
 
-        if enter:
+        if hide_cursor:
             Cursor.ShowCursor()
 
     def Move() -> None: ...
 
+    def Bar(length, carac_0: str = '[ ]', carac_1: str = '[0]', color: list = Colors.white, mode=Colorate.Horizontal, interval: int = 0.5, hide_cursor: bool = True, enter: bool = False, center: bool = False):
+
+        if hide_cursor:
+            Cursor.HideCursor()
+
+        if type(color) == list:
+            while True:
+                if length <= len(color):
+                    break
+                ncolor = [col for col in color]
+                for col in ncolor:
+                    color.append(col)
+
+        global passed
+        passed = False
+
+        if enter:
+            th = _thread(target=Anime._input)
+            th.start()
+
+        for i in range(length + 1):
+            bar = carac_1 * i + carac_0 * (length - i)
+            if passed is not False:
+                break
+            if type(color) == list:
+                if center:
+                    print(Center.XCenter(mode(color, bar)))
+                else:
+                    print(mode(color, bar))
+                _sleep(interval)
+                System.Clear()
+            else:
+                if center:
+                    print(Center.XCenter(color + bar))
+                else:
+                    print(color + bar)
+                _sleep(interval)
+                System.Clear()
+
+        if hide_cursor:
+            Cursor.ShowCursor()
+
     def Anime() -> None: ...
     """ ! developper area ! """
 
-    def _anime(text: str, color: list, mode, speed: int, interval: int):
-        _stdout.write(mode(color, text, speed))
+    def _anime(text: str, color: list, mode, interval: int):
+        _stdout.write(mode(color, text))
         _stdout.flush()
         _sleep(interval)
         System.Clear()
