@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 0.6 BETA
+# Version : 0.7 BETA
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -200,6 +200,7 @@ class Colors:
 
     white = _MakeColors._start('255;255;255')
     black = _MakeColors._start('0;0;0')
+    gray = _MakeColors._start('150;150;150')
 
     yellow = _MakeColors._start('255;255;0')
     purple = _MakeColors._start('255;0;255')
@@ -209,18 +210,16 @@ class Colors:
     pink = _MakeColors._start('255;0;150')
     turquoise = _MakeColors._start('0;150;255')
 
-    gray = _MakeColors._start('150;150;150')
-
     light_gray = _MakeColors._start('200;200;200')
     dark_gray = _MakeColors._start('100;100;100')
 
     light_red = _MakeColors._start('255;100;100')
-    light_green = _MakeColors._start('100;100;255')
-    light_blue = _MakeColors._start('100;255;100')
+    light_green = _MakeColors._start('100;255;100')
+    light_blue = _MakeColors._start('100;100;255')
 
     dark_red = _MakeColors._start('100;0;0')
-    dark_green = _MakeColors._start('0;0;100')
-    dark_blue = _MakeColors._start('0;100;0')
+    dark_green = _MakeColors._start('0;100;0')
+    dark_blue = _MakeColors._start('0;0;100')
 
     reset = white
 
@@ -298,14 +297,12 @@ class Colors:
 
     static_colors = [
         red, green, blue,
-        black, white,
+        white, black, gray,
         yellow, purple, cyan,
-        gray,
         orange, pink, turquoise,
         light_gray, dark_gray,
-        light_red, dark_red,
-        light_green, dark_green,
-        light_blue, dark_blue,
+        light_red, light_green, light_blue,
+        dark_red, dark_green, dark_blue,
         reset
     ]
 
