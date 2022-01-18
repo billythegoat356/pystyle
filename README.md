@@ -30,7 +30,7 @@ Stats: https://pepy.tech/project/pystyle
   - Colorate text ✔️
   - Colorate text with fade effect ✔️
   - Animations ❌
-  - Writing effects ❌
+  - Writing effects ✔️
   - Centered Text ✔️
   - Adding banners ✔️
   - Make boxes ✔️
