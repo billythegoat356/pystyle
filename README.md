@@ -27,15 +27,15 @@ Stats: https://pepy.tech/project/pystyle
 
 # FEATURES
 
-  - Colorate text
-  - Colorate text with fade effect
-  - Animations
-  - Writing effects
-  - Centered Text
-  - Adding banners
-  - Make boxes
-  - Hide and Show Cursor
-  - System Functions    
+  - Colorate text ✔️
+  - Colorate text with fade effect ✔️
+  - Animations ❌
+  - Writing effects ❌
+  - Centered Text ✔️
+  - Adding banners ✔️
+  - Make boxes ✔️
+  - Hide and Show Cursor ❌
+  - System Functions ❌
 
 <br>
 
@@ -92,7 +92,47 @@ Available effects are:
   - DiagonalBackwards
 
 <br>
- 
+
+## Writing text with fade effect
+
+<br>
+
+To print a text with a writing and fade effect you can use the `pystyle.Write` function.
+
+```python
+from pystyle import Write, Colors
+
+name = Write.Input("Enter your name -> ", Colors.red_to_purple, interval=0.0025)
+Write.Print(f"Nice to meet you, {name}!", Colors.blue_to_green, interval=0.05)
+```
+<br>
+
+
+There are 2 functions:<br>
+
+
+`Write.Print`: prints the text to the terminal with chosen effects<br>
+`Write.Input`: same than `Write.Print` but adds an input at the end<br>
+
+
+<br>
+
+
+There are 6 arguments:<br>
+
+
+`text`: the text to be written to the terminal<br>
+`color`: the color you want for the text<br>
+`interval`: the interval of the writing effect<br>
+`hide_cursor`: whether you want the cursor to be hidden or not<br>
+`end`: the end color, the default is white<br>
+`input_color` (only for `Write.Input`): the color of the input<br>
+
+
+<br>
+<br>
+
+
 ## Center text
 <img src="https://media.discordapp.net/attachments/888138903138213911/888174929386799104/pycenter.png">
 <br>
