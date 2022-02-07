@@ -156,7 +156,7 @@ print(Center.XCenter("Hello, Welcome to Pystyle."))
 Available modes are:
   - Center (Center the banner/text on both axis)
   - XCenter (Center the banner/text on X axis)
-  - Ycenter (Center the banner/text on Y axis)
+  - YCenter (Center the banner/text on Y axis)
 
 <br><br>
 
