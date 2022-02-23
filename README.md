@@ -14,6 +14,10 @@
 </p>
 
 > **PyStyle** is a python library to make very beautiful TUI designs.
+> <br>
+> Inspired by **pyfade** and **pycenter**,
+> <br>
+> The original idea was from <a href="https://github.com/venaxyt/gratient">**gratient**</a> by <a href="https://github.com/venaxyt">VenaxYT</a>.
 
 
 <img src="https://media.discordapp.net/attachments/888138903138213911/888139229681561681/pystylebanner.png"/> 
