@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 0.7 BETA
+# Version : 1.1 (added Colors.Symbol)
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -134,9 +134,10 @@ class Colors:
         dynamic_colors     |      colors that are dynamic, ex: 'blue_to_purple' (can be faded)
         all_colors         |      every color of static_colors and dynamic_colors
         
-    2 functions:
+    3 functions:
         StaticRGB()        |      create your own fix/static color
         DynamicRGB()       |      create your own faded/dynamic color (soon...)
+        Symbol()           |      create a colored symbol, ex: '[!]'
 
     """
 
@@ -145,6 +146,14 @@ class Colors:
 
     def DynamicRGB(r1: int, g1: int, b1: int, r2: int,
                    g2: int, b2: int) -> list: ...
+
+
+    """ symbols """
+
+    def Symbol(symbol: str, col: str, col_left_right: str, left: str = '[', right: str = ']') -> str:
+        return f"{col_left_right}{left}{col}{symbol}{col_left_right}{right}{Col.reset}"
+
+
     """ dynamic colors """
 
     black_to_white = ["m;m;m"]
@@ -664,13 +673,19 @@ class Center:
     """ ! developper area ! """
 
     def _xspaces(var: str):
-        col = _terminal_size().columns
+        try:
+            col = _terminal_size().columns
+        except OSError:
+            return 0
         varl = var.splitlines()
         nvarl = max(len(v) for v in varl if v.strip())
         return int((col - nvarl) / 2)
 
     def _yspaces(var: str):
-        lin = _terminal_size().lines
+        try:
+            lin = _terminal_size().lines
+        except OSError:
+            return 0
         varl = var.splitlines()
         nvarl = len(varl)
         return int((lin - nvarl) / 2)
