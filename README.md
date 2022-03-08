@@ -1,7 +1,7 @@
 <h1 align="center">PyStyle</h1>
 <br>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.6-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/billythegoat356/pystyle/blob/main/README.md" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -27,7 +27,7 @@ pip3 install pystyle
 ```
 Stats: https://pepy.tech/project/pystyle
 
-# FEATURES
+# FEATURES IN THE DOC
 
   - Colorate text ✔️
   - Colorate text with fade effect ✔️
