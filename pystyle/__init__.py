@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 1.2 (added Colors.StaticMIX)
+# Version : 1.3 (added Colors.StaticMIX, System.Windows)
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -26,8 +26,10 @@ if _name == 'nt':
 class System:
 
     """
-    5 functions:
+    1 variable:
+        Windows      |      tells if the user is on Windows OS or not
 
+    5 functions:
         Init()       |      initialize the terminal to allow the use of colors
         Clear()      |      clear the terminal
         Title()      |      set the title of terminal, only for Windows
@@ -35,28 +37,31 @@ class System:
         Command()    |      enter a shell command
     """
 
+    Windows = _name == 'nt'
+
     def Init():
         _system('')
 
     def Clear():
-        return _system("cls" if _name == 'nt' else "clear")
+        return _system("cls" if System.Windows else "clear")
 
     def Title(title: str):
-        if _name == 'nt':
+        if System.Windows:
             return _system(f"title {title}")
 
     def Size(x: int, y: int):
-        if _name == 'nt':
+        if System.Windows:
             return _system(f"mode {x}, {y}")
 
     def Command(command: str):
         return _system(command)
 
+
+
 class Cursor:
 
     """
     2 functions:
-
         HideCursor()      |      hides the white blinking in the terminal
         ShowCursor()      |      shows the white blinking in the terminal
 
@@ -340,12 +345,10 @@ class Colorate:
     """
     6 functions:
         Static colors:
-
             Color()                 |            color a text with a static color
             Error()                 |            make an error with red text and advanced arguments
 
         Dynamic colors:
-
             Vertical()              |           fade a text vertically
             Horizontal()            |           fade a text horizontally
             Diagonal()              |           fade a text diagonally
