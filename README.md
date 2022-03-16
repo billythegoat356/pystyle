@@ -5,8 +5,9 @@ It's more easy to understand but not more good 😅
 ## SCREENS AND UTILISATION
 
 IMPORTATION
-````python
-from greatColors import *```
+````
+from greatColors import *
+```
 
 ADD COLOR TO A TEXT
 ```python
