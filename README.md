@@ -6,10 +6,9 @@ It's more easy to understand but not more good 😅
 
 IMPORTATION
 
-````python
+```python
 
 from greatColors import *
-
 ```
 
 ADD COLOR TO A TEXT
