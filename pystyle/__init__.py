@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 1.3 (added Colors.StaticMIX, System.Windows)
+# Version : 1.4 (added Colors.StaticMIX, System.Windows)
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -379,8 +379,9 @@ class Colorate:
 
     """ faded/dynamic colors"""
 
-    def Vertical(color: list, text: str, speed: int = 1, start: int = 0, stop: int = 0) -> str:
+    def Vertical(color: list, text: str, speed: int = 1, start: int = 0, stop: int = 0, cut: int = 0) -> str:
 
+        color = color[cut:]
         lines = text.splitlines()
         result = ""
 
@@ -411,7 +412,9 @@ class Colorate:
 
         return result.rstrip()
 
-    def Horizontal(color: list, text: str, speed: int = 1) -> str:
+    def Horizontal(color: list, text: str, speed: int = 1, cut: int = 0) -> str:
+
+        color = color[cut:]
         lines = text.splitlines()
         result = ""
 
@@ -430,7 +433,9 @@ class Colorate:
             result += "\n"
         return result.rstrip()
 
-    def Diagonal(color: list, text: str, speed: int = 1) -> str:
+    def Diagonal(color: list, text: str, speed: int = 1, cut: int = 0) -> str:
+
+        color = color[cut:]
         lines = text.splitlines()
         result = ""
         color_n = 0
@@ -449,7 +454,9 @@ class Colorate:
 
         return result.rstrip()
 
-    def DiagonalBackwards(color: list, text: str, speed: int = 1) -> str:
+    def DiagonalBackwards(color: list, text: str, speed: int = 1, cut: int = 0) -> str:
+
+        color = color[cut:]
 
         lines = text.splitlines()
         result = ""
