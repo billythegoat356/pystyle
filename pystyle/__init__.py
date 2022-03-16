@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04
 
-# Version : 1.1 (added Colors.Symbol)
+# Version : 1.2 (added Colors.StaticMIX)
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -51,7 +51,6 @@ class System:
 
     def Command(command: str):
         return _system(command)
-
 
 class Cursor:
 
@@ -137,6 +136,8 @@ class Colors:
     3 functions:
         StaticRGB()        |      create your own fix/static color
         DynamicRGB()       |      create your own faded/dynamic color (soon...)
+        StaticMIX()        |      mix two static colors
+        DynamixMIX()       |      mix two dynamix colors (soon...)
         Symbol()           |      create a colored symbol, ex: '[!]'
 
     """
@@ -146,6 +147,17 @@ class Colors:
 
     def DynamicRGB(r1: int, g1: int, b1: int, r2: int,
                    g2: int, b2: int) -> list: ...
+
+    def StaticMIX(col1: str, col2: str) -> str:
+        # sorry for the bad dev... its kinda awkward
+        col1, col2 = col1.replace('\033[38;2;', '').replace('m',''), col2.replace('\033[38;2;', '').replace('m','')
+        col1, col2 = col1.split(';'), col2.split(';')
+        r = int((int(col1[0]) + int(col2[0])) / 2)
+        g = int((int(col1[1]) + int(col2[1])) / 2)
+        b = int((int(col1[2]) + int(col2[2])) / 2)
+        return _MakeColors._start(f'{r};{g};{b}')
+
+    def DynamixMIX(): ...
 
 
     """ symbols """
