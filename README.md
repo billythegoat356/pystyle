@@ -233,8 +233,9 @@ Available modes are:
 
 ## 👤 Authors
 
-👤 GitHub: [@**loTus01**](https://github.com/loTus04)<br>
 👤 GitHub: [@**billythegoat356**](https://github.com/billythegoat356)
+👤 GitHub: [@**loTus01**](https://github.com/loTus04)<br>
+👤 GitHub: [@**BlueRed**](https://github.com/CSM-BlueRed)<br>
 
 ## 🤝 Contributing
 
