@@ -16,6 +16,7 @@
 > **PyStyle** is a python library to make very beautiful TUI designs.
 > <br>
 > Inspired by **pyfade** and **pycenter**,
+> Developped by [Billy](https://github.com/billythegoat356) and [loTus01](https://github.com/loTus04) with the help of [BlueRed](https://github.com/CSM-BlueRed)
 
 
 <img src="https://media.discordapp.net/attachments/888138903138213911/888139229681561681/pystylebanner.png"/> 
