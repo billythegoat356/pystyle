@@ -11,6 +11,9 @@
   <a href="https://github.com/billythegoat356/pystyle/blob/main/LICENSE" target="_blank">
     <img alt="License: EPL-2.0" src="https://img.shields.io/github/license/billythegoat356/pystyle" />
   </a>
+  <a href="https://pepy.tech/project/pystyle" target="_blank">
+    <img alt="Downloads" src="https://static.pepy.tech/personalized-badge/pystyle?period=total&units=international_system&left_color=grey&right_color=orange&left_text=Downloads" />
+  </a>
 </p>
 
 > **PyStyle** is a python library to make very beautiful TUI designs.
