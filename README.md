@@ -234,7 +234,7 @@ Available modes are:
 
 ## 👤 Authors
 
-👤 GitHub: [@**billythegoat356**](https://github.com/billythegoat356)
+👤 GitHub: [@**billythegoat356**](https://github.com/billythegoat356)<br>
 👤 GitHub: [@**loTus01**](https://github.com/loTus04)<br>
 👤 GitHub: [@**BlueRed**](https://github.com/CSM-BlueRed)<br>
 
