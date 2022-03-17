@@ -570,25 +570,6 @@ class Colorate:
         final = final[:-1]
         return final + Colors.reset
 
-    def debug(colors: list):
-        fades = []
-        for color in colors:
-            try:
-               fades.append([color, colors[colors.index(color) + 1]])
-            except:
-                ...
-        final_colors = []
-        fades_vg1 = []
-        for fade in fades:
-            fades_vg1.append(Colors.MakeFade(fade))
-        print(fades_vg1)
-
-        for fade in fades_vg1:
-            for color in fade:
-                print(color + '####', end = '')
-        print()
-        print('###'.join(color for color in final_colors))
-
 
 
 class Anime:
