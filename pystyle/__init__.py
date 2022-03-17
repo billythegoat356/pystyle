@@ -1,8 +1,8 @@
-# made by billythegoat356 and loTus01
+# made by billythegoat356 and loTus01 with the help of BlueRed
 
-# https://github.com/billythegoat356 https://github.com/loTus04
+# https://github.com/billythegoat356 https://github.com/loTus04 https://github.com/CSM-BlueRed
 
-# Version : 1.4 (added Colors.StaticMIX, System.Windows)
+# Version : 1.5 (added Colors.StaticMIX, Colors.DynamicMIX)
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -98,6 +98,9 @@ class _MakeColors:
     def _makeansi(col: str, text: str) -> str:
         return f"\033[38;2;{col}m{text}\033[38;2;255;255;255m"
 
+    def _rmansi(col: str) -> str:
+        return col.replace('\033[38;2;', '').replace('m','').replace('50m', '').replace('\x1b[38', '')
+
     def _makergbcol(var1: list, var2: list) -> list:
         col = [_col for _col in var1[:12]]
         for _col in var2[:12]:
@@ -126,7 +129,24 @@ class _MakeColors:
             for col in color:
                 rainbow.append(col)
         return rainbow
-
+    
+    def _reverse(colors: list) -> list:
+        _colors = [col for col in colors]
+        for col in reversed(_colors):
+            colors.append(col)
+        return colors
+    
+    def _mixcolors(col1: str, col2: str, _reverse: bool = True) -> list:
+        col1, col2 = _MakeColors._rmansi(col=col1), _MakeColors._rmansi(col=col2)
+        fade1 = Colors.StaticMIX([col1, col2], _start=False)      
+        fade2 = Colors.StaticMIX([fade1, col2], _start=False)
+        fade3 = Colors.StaticMIX([fade1, col1], _start=False)
+        fade4 = Colors.StaticMIX([fade2, col2], _start=False)
+        fade5 = Colors.StaticMIX([fade1, fade3], _start=False)    
+        fade6 = Colors.StaticMIX([fade3, col1], _start=False)
+        fade7 = Colors.StaticMIX([fade1, fade2], _start=False)
+        mixed = [col1, fade6, fade3, fade5, fade1, fade7, fade2, fade4, col2]
+        return _MakeColors._reverse(colors=mixed) if _reverse else mixed 
 
 class Colors:
 
@@ -141,8 +161,8 @@ class Colors:
     3 functions:
         StaticRGB()        |      create your own fix/static color
         DynamicRGB()       |      create your own faded/dynamic color (soon...)
-        StaticMIX()        |      mix two static colors
-        DynamixMIX()       |      mix two dynamix colors (soon...)
+        StaticMIX()        |      mix two or more static colors
+        DynamicMIX()       |      mix two or more dynamic colors
         Symbol()           |      create a colored symbol, ex: '[!]'
 
     """
@@ -153,16 +173,37 @@ class Colors:
     def DynamicRGB(r1: int, g1: int, b1: int, r2: int,
                    g2: int, b2: int) -> list: ...
 
-    def StaticMIX(col1: str, col2: str) -> str:
-        # sorry for the bad dev... its kinda awkward
-        col1, col2 = col1.replace('\033[38;2;', '').replace('m',''), col2.replace('\033[38;2;', '').replace('m','')
-        col1, col2 = col1.split(';'), col2.split(';')
-        r = int((int(col1[0]) + int(col2[0])) / 2)
-        g = int((int(col1[1]) + int(col2[1])) / 2)
-        b = int((int(col1[2]) + int(col2[2])) / 2)
-        return _MakeColors._start(f'{r};{g};{b}')
+    def StaticMIX(colors: list, _start: bool = True) -> str:
+        rgb = []
+        for col in colors:
+            col = _MakeColors._rmansi(col=col)
+            col = col.split(';')
+            r = int(int(col[0]))
+            g = int(int(col[1]))
+            b = int(int(col[2]))
+            rgb.append([r, g, b])
+        r = round(sum(rgb[0] for rgb in rgb) / len(rgb))
+        g = round(sum(rgb[1] for rgb in rgb) / len(rgb))
+        b = round(sum(rgb[2] for rgb in rgb) / len(rgb))
+        rgb = f'{r};{g};{b}'
+        return _MakeColors._start(rgb) if _start else rgb
 
-    def DynamixMIX(): ...
+
+    def DynamicMIX(colors: list):
+        _colors = []
+        for color in colors:
+            if colors.index(color) == len(colors) - 1:
+                break
+            _colors.append([color, colors[colors.index(color) + 1]])
+        colors = []
+        for color in _colors:
+            colors.append(_MakeColors._mixcolors(col1=color[0], col2=color[1], _reverse=False))
+        final = []
+        for col in colors:
+            for col in col:
+                final.append(col)
+        return _MakeColors._reverse(colors=final)
+            
 
 
     """ symbols """
@@ -206,6 +247,7 @@ class Colors:
 
     cyan_to_green = ["0;255;n"]
     cyan_to_blue = ["0;n;255"]
+
 
     red_to_blue = ...
     red_to_green = ...
