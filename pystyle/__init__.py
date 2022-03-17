@@ -188,7 +188,6 @@ class Colors:
         rgb = f'{r};{g};{b}'
         return _MakeColors._start(rgb) if _start else rgb
 
-
     def DynamicMIX(colors: list):
         _colors = []
         for color in colors:
