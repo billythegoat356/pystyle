@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04 https://github.com/CSM-BlueRed
 
-# Version : 1.8 (added Colorate.Format(), Banners:class, Center.XCenterLines, updated Box.Lines())
+# Version : 1.8 (added Colorate.Format, Banner.Arrow, updated Box to Banner, updated Box.Lines())
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -871,12 +871,13 @@ class Add:
         return [line + (size - len(line)) * " " for line in ban1]
 
 
-class Box:
+class Banner:
 
     """
     2 functions:
         SimpleCube()                  |             create a simple cube with the given text
         Lines()                       |             create a text framed by two lines
+        Arrow()                       |             create a custom arrow
     """
 
     def Box(content: str, up_left: str, up_right: str, down_left: str, down_right: str, left_line: str, up_line: str, right_line: str, down_line: str) -> str:
@@ -926,15 +927,7 @@ class Box:
         for lines in assembly.splitlines():
             final += Center.XCenter(lines) + "\n"
         return final
-
-
-class Banners:
-
-    """
-    1 function:
-        Arrow()                       |             create a arrow with custom arguments
-    """
-
+    
     def Arrow(icon: str = 'a', size: int = 2, number: int = 2, direction = 'right') -> str:
         spaces = ' ' * (size + 1)
         _arrow = ''
@@ -964,5 +957,7 @@ class Banners:
                 _arrow += (' ' * count) + spaces.join([line] * (number)) + '\n'
                 count += 2
         return _arrow
+
+Box = Banner
 
 System.Init()
