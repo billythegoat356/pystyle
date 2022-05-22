@@ -2,14 +2,14 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04 https://github.com/CSM-BlueRed
 
-# Version : 1.5 (added Colors.StaticMIX, Colors.DynamicMIX)
+# Version : 1.8 (added Colorate.Format(), Banners:class, Center.XCenterLines, updated Box.Lines())
 
 # based on pyfade anc pycenter, R.I.P
 
 # <3
 
 
-from os import name as _name, system as _system, get_terminal_size as _terminal_size
+from os import name as _name, system as _system, get_terminal_size as _terminal_size, terminal_size
 from sys import stdout as _stdout
 from time import sleep as _sleep
 from threading import Thread as _thread
@@ -28,7 +28,6 @@ class System:
     """
     1 variable:
         Windows      |      tells if the user is on Windows OS or not
-
     5 functions:
         Init()       |      initialize the terminal to allow the use of colors
         Clear()      |      clear the terminal
@@ -64,7 +63,6 @@ class Cursor:
     2 functions:
         HideCursor()      |      hides the white blinking in the terminal
         ShowCursor()      |      shows the white blinking in the terminal
-
     """
 
     def HideCursor():
@@ -102,7 +100,7 @@ class _MakeColors:
         return col.replace('\033[38;2;', '').replace('m','').replace('50m', '').replace('\x1b[38', '')
 
     def _makergbcol(var1: list, var2: list) -> list:
-        col = [_col for _col in var1[:12]]
+        col = list(var1[:12])
         for _col in var2[:12]:
             col.append(_col)
         for _col in reversed(col):
@@ -131,7 +129,7 @@ class _MakeColors:
         return rainbow
     
     def _reverse(colors: list) -> list:
-        _colors = [col for col in colors]
+        _colors = list(colors)
         for col in reversed(_colors):
             colors.append(col)
         return colors
@@ -164,7 +162,6 @@ class Colors:
         StaticMIX()        |      mix two or more static colors
         DynamicMIX()       |      mix two or more dynamic colors
         Symbol()           |      create a colored symbol, ex: '[!]'
-
     """
 
     def StaticRGB(r: int, g: int, b: int) -> str:
@@ -194,9 +191,8 @@ class Colors:
             if colors.index(color) == len(colors) - 1:
                 break
             _colors.append([color, colors[colors.index(color) + 1]])
-        colors = []
-        for color in _colors:
-            colors.append(_MakeColors._mixcolors(col1=color[0], col2=color[1], _reverse=False))
+        colors = [_MakeColors._mixcolors(col1=color[0], col2=color[1], _reverse=False) for color in _colors]
+
         final = []
         for col in colors:
             for col in col:
@@ -353,12 +349,11 @@ class Colors:
     rainbow = _MakeColors._makerainbow(
         red_to_green, green_to_blue, blue_to_red)
 
-    for col in [
-            red_to_blue, red_to_green,
-            green_to_blue, green_to_red,
-            blue_to_red, blue_to_green
-    ]:
-        dynamic_colors.append(col)
+    for col in (
+        red_to_blue, red_to_green,
+        green_to_blue, green_to_red,
+        blue_to_red, blue_to_green
+    ): dynamic_colors.append(col)
 
     dynamic_colors.append(rainbow)
 
@@ -388,16 +383,15 @@ class Colorate:
         Static colors:
             Color()                 |            color a text with a static color
             Error()                 |            make an error with red text and advanced arguments
-
+            Format()                |            set different colors for different parts of a text
         Dynamic colors:
             Vertical()              |           fade a text vertically
             Horizontal()            |           fade a text horizontally
             Diagonal()              |           fade a text diagonally
             DiagonalBackwards()     |           fade a text diagonally but backwards
-
     """
 
-    """ fix/static colors"""
+    """ fix/static colors """
 
     def Color(color: str, text: str, end: bool = True) -> str:
         return _MakeColors._maketext(color=color, text=text, end=end)
@@ -421,7 +415,6 @@ class Colorate:
     """ faded/dynamic colors"""
 
     def Vertical(color: list, text: str, speed: int = 1, start: int = 0, stop: int = 0, cut: int = 0) -> str:
-
         color = color[cut:]
         lines = text.splitlines()
         result = ""
@@ -454,7 +447,6 @@ class Colorate:
         return result.rstrip()
 
     def Horizontal(color: list, text: str, speed: int = 1, cut: int = 0) -> str:
-
         color = color[cut:]
         lines = text.splitlines()
         result = ""
@@ -496,7 +488,6 @@ class Colorate:
         return result.rstrip()
 
     def DiagonalBackwards(color: list, text: str, speed: int = 1, cut: int = 0) -> str:
-
         color = color[cut:]
 
         lines = text.splitlines()
@@ -519,6 +510,12 @@ class Colorate:
             result = result + '\n' + resultL
         return result.strip()
 
+    def Format(text: str, *attrs):
+        for attr in attrs:
+            for char in attr[0]:
+                text = text.replace(char, attr[1] + char + Col.reset)
+        return text
+
 
 class Anime:
 
@@ -528,10 +525,9 @@ class Anime:
         Move()                  |            make a small animation moving the text, available soon
         Bar()                   |            a fully customizable charging bar
         Anime()                 |            a mix between Fade() and Move(), available soon
-
     """
 
-    def Fade(text: str, color: list, mode, time=True, interval=0.05, hide_cursor: bool = True, enter: bool = False):
+    def Fade(text: str, color: list, mode, time = True, interval = 0.05, hide_cursor: bool = True, enter: bool = False):
         if hide_cursor:
             Cursor.HideCursor()
 
@@ -542,13 +538,11 @@ class Anime:
         passed = False
 
         if enter:
-            th = _thread(target=Anime._input)
+            th = _thread(target = Anime._input)
             th.start()
 
         if time is True:
-            while True:
-                if passed is not False:
-                    break
+            while not passed:
                 Anime._anime(text, color, mode, interval)
                 ncolor = color[1:]
                 ncolor.append(color[0])
@@ -556,7 +550,7 @@ class Anime:
 
         else:
             for _ in range(time):
-                if passed is not False:
+                if passed:
                     break
                 Anime._anime(text, color, mode, interval)
                 ncolor = color[1:]
@@ -566,18 +560,61 @@ class Anime:
         if hide_cursor:
             Cursor.ShowCursor()
 
-    def Move() -> None: ...
+    def Move(text: str, color: list = None, time = True, interval = 0.01, hide_cursor: bool = True, enter: bool = False):
+        if hide_cursor:
+            Cursor.HideCursor()
+
+        if type(time) == int:
+            time *= 15
+
+        global passed
+        passed = False
+
+        columns = _terminal_size().columns
+
+        if enter:
+            th = _thread(target = Anime._input)
+            th.start()
+
+        count = 0
+        mode = 1
+
+        if time is True:
+            while not passed:
+                if mode == 1:
+                    if count >= (columns - (max(len(txt) for txt in text.splitlines()) + 1)):
+                        mode = 2
+                    count += 1
+                elif mode == 2:
+                    if count <= 0:
+                        mode = 1
+                    count -= 1
+                Anime._anime('\n'.join((' ' * count) + line for line in text.splitlines()), color or [], lambda a, b: b, interval)
+        else:
+            for _ in range(time):
+                if passed:
+                    break
+                if mode == 1:
+                    if count >= (columns - (max(len(txt) for txt in text.splitlines()) + 1)):
+                        mode = 2
+                elif mode == 2:
+                    if count <= 0:
+                        mode = 1
+                Anime._anime('\n'.join((' ' * count) + line for line in text.splitlines()), color or [], lambda a, b: b, interval)
+
+                count += 1
+
+        if hide_cursor:
+            Cursor.ShowCursor()
+
 
     def Bar(length, carac_0: str = '[ ]', carac_1: str = '[0]', color: list = Colors.white, mode=Colorate.Horizontal, interval: int = 0.5, hide_cursor: bool = True, enter: bool = False, center: bool = False):
-
         if hide_cursor:
             Cursor.HideCursor()
 
         if type(color) == list:
-            while True:
-                if length <= len(color):
-                    break
-                ncolor = [col for col in color]
+            while not length <= len(color):
+                ncolor = list(color)
                 for col in ncolor:
                     color.append(col)
 
@@ -590,23 +627,20 @@ class Anime:
 
         for i in range(length + 1):
             bar = carac_1 * i + carac_0 * (length - i)
-            if passed is not False:
+            if passed:
                 break
             if type(color) == list:
                 if center:
                     print(Center.XCenter(mode(color, bar)))
                 else:
                     print(mode(color, bar))
-                _sleep(interval)
-                System.Clear()
             else:
                 if center:
                     print(Center.XCenter(color + bar))
                 else:
                     print(color + bar)
-                _sleep(interval)
-                System.Clear()
-
+            _sleep(interval)
+            System.Clear()
         if hide_cursor:
             Cursor.ShowCursor()
 
@@ -630,11 +664,9 @@ class Write:
     2 functions:
         Print()         |          print a text to the terminal while coloring it and with a fade and write effect
         Input()         |          same than Print() but adds an input to the end and returns its valor
-
     """
 
     def Print(text: str, color: list, interval=0.05, hide_cursor: bool = True, end: str = Colors.reset) -> None:
-
         if hide_cursor:
             Cursor.HideCursor()
 
@@ -647,7 +679,6 @@ class Write:
             Cursor.ShowCursor()
 
     def Input(text: str, color: list, interval=0.05, hide_cursor: bool = True, input_color: str = Colors.reset, end: str = Colors.reset) -> str:
-
         if hide_cursor:
             Cursor.HideCursor()
 
@@ -668,10 +699,8 @@ class Write:
     def _write(text: str, color, interval: int):
         lines = list(text)
         if type(color) == list:
-            while True:
-                if len(lines) <= len(color):
-                    break
-                ncolor = [col for col in color]
+            while not len(lines) <= len(color):
+                ncolor = list(color)
                 for col in ncolor:
                     color.append(col)
 
@@ -692,28 +721,31 @@ class Center:
     """
     2 functions:
         XCenter()                  |             center the given text in X cords
+        XCenterLines()             |             center the lines of the text in X cords
         YCenter()                  |             center the given text in Y cords
         Center()                   |             center the given text in X and Y cords
+        Align()                    |             align the given text
 
+    NOTE: the functions of the class can be broken if the text argument have colors in it
     """
 
     def XCenter(var: str, spaces: int = None, icon: str = " ", middle: bool = False):
         if spaces is None:
             spaces = Center._xspaces(var=var)
 
-        if not middle:
-            return "\n".join((icon * spaces) + var for var in var.splitlines())
-        else:
-            return "\n".join((icon * spaces) + var + (icon * int(spaces)) for var in var.splitlines())
+        return "\n".join((icon * spaces) + var + (icon * int(spaces)) for var in var.splitlines()) if middle else "\n".join((icon * spaces) + var for var in var.splitlines())
+
+    def XCenterLines(var: list, spaces: int = None, icon: str = " ", middle: bool = False):
+        final = ''
+        for lines in var.splitlines():
+            final += Center.XCenter(lines, spaces, icon, middle) + "\n"
+        return final
 
     def YCenter(var: str, spaces: int = None, icon: str = "\n", middle: bool = False):
         if spaces is None:
             spaces = Center._yspaces(var=var)
 
-        if not middle:
-            return icon * spaces + "\n".join(var.splitlines())
-        else:
-            return icon * spaces + "\n".join(var.splitlines()) + icon * spaces
+        return icon * spaces + "\n".join(var.splitlines()) + icon * spaces if middle else icon * spaces + "\n".join(var.splitlines())
 
     def Center(var: str, xspaces: int = None, yspaces: int = None, xicon: str = " ", yicon: str = "\n", middle: bool = False) -> str:
         if xspaces is None:
@@ -724,14 +756,21 @@ class Center:
 
         if not middle:
             var = yicon * yspaces + "\n".join(var.splitlines())
+            return "\n".join((xicon * xspaces) + var for var in var.splitlines())
         else:
             var = yicon * yspaces + \
                 "\n".join(var.splitlines()) + yicon * yspaces
 
-        if not middle:
-            return "\n".join((xicon * xspaces) + var for var in var.splitlines())
-        else:
             return "\n".join((xicon * xspaces) + var + (xicon * int(xspaces)) for var in var.splitlines())
+
+    def Align(alignement: str, text: str, icon: str = ' ', lenght: int = _terminal_size().columns):
+        maxLineSize = max(len(line) for line in text.splitlines())
+        if alignement == 'center':
+            return Center.XCenter(text)
+        elif alignement == 'left':
+            return text
+        elif alignement == 'right':
+            return '\n'.join((icon * (lenght - maxLineSize)) + line for line in text.splitlines())
 
     """ ! developper area ! """
 
@@ -741,7 +780,7 @@ class Center:
         except OSError:
             return 0
         varl = var.splitlines()
-        nvarl = max(len(v) for v in varl if v.strip())
+        nvarl = max((len(v) for v in varl if v.strip()), default = 0)
         return int((col - nvarl) / 2)
 
     def _yspaces(var: str):
@@ -755,11 +794,12 @@ class Center:
 
 
 class Add:
+
     """
     1 function:
         Add()           |           allow you to add a text to another, and even center it
-
     """
+
     def Add(banner1, banner2, spaces=0, center=False):
         if center:
             split1 = len(banner1.splitlines())
@@ -832,11 +872,11 @@ class Add:
 
 
 class Box:
+
     """
     2 functions:
         SimpleCube()                  |             create a simple cube with the given text
         Lines()                       |             create a text framed by two lines
-
     """
 
     def Box(content: str, up_left: str, up_right: str, down_left: str, down_right: str, left_line: str, up_line: str, right_line: str, down_line: str) -> str:
@@ -874,18 +914,55 @@ class Box:
     def DoubleCube(content: str) -> str:
         return Box.Box(content, "╔═", "═╗", "╚═", "═╝", "║", "═", "║", "═")
 
-    def Lines(content: str) -> str:
-        # voir pour ajouter un argument pour personnaliser la ligne
+    def Lines(content: str, color = None, mode = Colorate.Horizontal, line = '═', pepite = 'ቐ') -> str:
         l = 1
         for c in content.splitlines():
             if len(c) > l:
                 l = len(c)
-        box = f"─{'═'*l}☆☆{'═'*l}─"
-        addspace = round((len(box) - len(content)) / 2)
-        if addspace % 2 == 0:
-            addspace += 1
+        mode = Colorate.Horizontal if color is not None else (lambda **kw: kw['text'])
+        box = mode(text = f"─{line*l}{pepite * 2}{line*l}─", color = color)
+        assembly = box + "\n" + content + "\n" + box
+        final = ''
+        for lines in assembly.splitlines():
+            final += Center.XCenter(lines) + "\n"
+        return final
 
-        return box + "\n" + addspace * " " + content + addspace * " " + "\n" + box
 
+class Banners:
+
+    """
+    1 function:
+        Arrow()                       |             create a arrow with custom arguments
+    """
+
+    def Arrow(icon: str = 'a', size: int = 2, number: int = 2, direction = 'right') -> str:
+        spaces = ' ' * (size + 1)
+        _arrow = ''
+        structure = (size + 2, [size * 2, size * 2])
+        count = 0
+        if direction == 'right':
+            for i in range(structure[1][0]):
+                line = (structure[0] * icon)
+                _arrow += (' ' * count) + spaces.join([line] * (number)) + '\n'
+                count += 2
+
+            for i in range(structure[1][0] + 1):
+                line = (structure[0] * icon)
+                _arrow += (' ' * count) + spaces.join([line] * (number)) + '\n'
+                count -= 2
+        elif direction == 'left':
+            for i in range(structure[1][0]):
+                count += 2
+
+            for i in range(structure[1][0]):
+                line = (structure[0] * icon)
+                _arrow += (' ' * count) + spaces.join([line] * (number)) + '\n'
+                count -= 2
+
+            for i in range(structure[1][0] + 1):
+                line = (structure[0] * icon)
+                _arrow += (' ' * count) + spaces.join([line] * (number)) + '\n'
+                count += 2
+        return _arrow
 
 System.Init()
