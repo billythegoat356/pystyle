@@ -1,4 +1,4 @@
-# made by billythegoat356 and loTus01, with the help of BlueRed
+# made by billythegoat356, loTus01, and BlueRed
 
 # https://github.com/billythegoat356 https://github.com/loTus04 https://github.com/CSM-BlueRed
 
