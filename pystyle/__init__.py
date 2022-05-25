@@ -2,7 +2,7 @@
 
 # https://github.com/billythegoat356 https://github.com/loTus04 https://github.com/CSM-BlueRed
 
-# Version : 1.8 (added Colorate.Format, added Banner.Arrow, added Anime.Move, added Center.GroupAlign, added Center.TextAlign, updated Box to Banner, updated Box.Lines))
+# Version : 2.0 (added Colorate.Format, added Banner.Arrow, added Anime.Move, added Center.GroupAlign, added Center.TextAlign, updated Box to Banner, updated Box.Lines))
 
 # based on pyfade anc pycenter, R.I.P
 
@@ -540,7 +540,7 @@ class Anime:
         Anime()                 |            a mix between Fade() and Move(), available soon
     """
 
-    def Fade(text: str, color: list, mode, time = True, interval = 0.05, hide_cursor: bool = True, enter: bool = False):
+    def Fade(text: str, color: list, mode, time=True, interval=0.05, hide_cursor: bool = True, enter: bool = False):
         if hide_cursor:
             Cursor.HideCursor()
 
@@ -551,11 +551,13 @@ class Anime:
         passed = False
 
         if enter:
-            th = _thread(target = Anime._input)
+            th = _thread(target=Anime._input)
             th.start()
 
         if time is True:
-            while not passed:
+            while True:
+                if passed is not False:
+                    break
                 Anime._anime(text, color, mode, interval)
                 ncolor = color[1:]
                 ncolor.append(color[0])
@@ -563,7 +565,7 @@ class Anime:
 
         else:
             for _ in range(time):
-                if passed:
+                if passed is not False:
                     break
                 Anime._anime(text, color, mode, interval)
                 ncolor = color[1:]
