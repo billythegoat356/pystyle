@@ -20,7 +20,7 @@
 > <br>
 > Inspired by **pyfade** and **pycenter**,
 > <br>
-> Developped by [Billy](https://github.com/billythegoat356) and [loTus01](https://github.com/loTus04), and [BlueRed](https://github.com/CSM-BlueRed)
+> Developped by [Billy](https://github.com/billythegoat356), [loTus01](https://github.com/loTus04), and [BlueRed](https://github.com/CSM-BlueRed)
 
 
 <img src="https://media.discordapp.net/attachments/888138903138213911/888139229681561681/pystylebanner.png"/> 
