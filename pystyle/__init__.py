@@ -304,11 +304,11 @@ class Colors:
     ]
 
     for color in dynamic_colors:
-        _col = 20
-        reversed_col = 220
+        _col = 10
+        reversed_col = 200
 
-        dbl_col = 20
-        dbl_reversed_col = 220
+        dbl_col = 10
+        dbl_reversed_col = 200
 
         content = color[0]
         color.pop(0)
@@ -323,8 +323,8 @@ class Colors:
                 result = content.replace('n', str(reversed_col))
                 color.append(result)
 
-            _col += 20
-            reversed_col -= 20
+            _col += 10
+            reversed_col -= 10
 
         for _ in range(12):
 
@@ -336,8 +336,8 @@ class Colors:
                 result = content.replace('n', str(dbl_col))
                 color.append(result)
 
-            dbl_col += 20
-            dbl_reversed_col -= 20
+            dbl_col += 10
+            dbl_reversed_col -= 10
 
     red_to_blue = _MakeColors._makergbcol(red_to_purple, purple_to_blue)
     red_to_green = _MakeColors._makergbcol(red_to_yellow, yellow_to_green)
