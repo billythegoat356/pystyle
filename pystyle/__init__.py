@@ -239,6 +239,7 @@ class Colors:
 
     purple_to_red = ["255;0;n"]
     purple_to_blue = ["n;0;255"]
+    purple_to_pink = ["255;0;255"]
 
     cyan_to_green = ["0;255;n"]
     cyan_to_blue = ["0;n;255"]
