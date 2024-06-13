@@ -41,8 +41,8 @@ Stats: https://pepy.tech/project/pystyle
   - Centered Text ✔️
   - Adding banners ✔️
   - Make boxes ✔️
-  - Hide and Show Cursor ❌
-  - System Functions ❌
+  - Hide and Show Cursor ✔️
+  - System Functions ✔️
 
 <br>
 
@@ -231,6 +231,59 @@ Available modes are:
   - Lines
   - SimpleCube
   - DoubleCube
+
+## Cursor
+Show cursor!
+
+```python
+from pystyle import Cursor
+
+Cursor.ShowCursor()
+```
+
+Hide cursor!
+
+```python
+from pystyle import Cursor
+
+Cursor.HideCursor()
+```
+
+## System functions
+### Check the terminal support colors
+```python
+from pystyle import System
+
+System.Init()
+```
+### Clear the terminal screen
+```python
+from pystyle import System
+
+System.Clear()
+```
+### Change the terminal title
+```python
+from pystyle import System
+
+System.Title("The title")
+```
+**Notice: this feature only work on windows**
+### Change terminal size
+
+**Notice** This feature is only working on windows
+
+```python
+from pystyle import System
+
+System.Size(12,12)
+```
+### Run a shell command
+```python
+from pystyle import System
+
+System.Command("echo hello")
+```
 
 <br>
 <br>
