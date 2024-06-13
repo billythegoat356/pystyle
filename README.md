@@ -41,8 +41,8 @@ Stats: https://pepy.tech/project/pystyle
   - Centered Text ✔️
   - Adding banners ✔️
   - Make boxes ✔️
-  - Hide and Show Cursor ❌
-  - System Functions ❌
+  - Hide and Show Cursor ✔️
+  - System Functions ✔️
 
 <br>
 
@@ -231,6 +231,23 @@ Available modes are:
   - Lines
   - SimpleCube
   - DoubleCube
+
+## Cursor
+Show cursor!
+
+```python
+from pystyle import Cursor
+
+Cursor.ShowCursor()
+```
+
+Hide cursor!
+
+```python
+from pystyle import Cursor
+
+Cursor.HideCursor()
+```
 
 <br>
 <br>
