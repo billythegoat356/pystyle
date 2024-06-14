@@ -30,7 +30,7 @@
 ```sh
 pip3 install pystyle
 ```
-Stats: https://pepy.tech/project/pystyle
+وضیعت: https://pepy.tech/project/pystyle
 
 # بخش هایی که در این مستند گفته شده.
 
