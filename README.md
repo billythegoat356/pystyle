@@ -306,4 +306,4 @@ Give a ⭐️ if this project helped you!
 
 ***
 ## Translations
-![Persian](./README-FA.md)
+[Persian](./README-FA.md)
