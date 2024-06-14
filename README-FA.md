@@ -20,7 +20,7 @@
 > <br>
 > با الهام از **pyfade** و **pycenter**.
 > <br>
-> ساخته شده توسط [Billy](https://github.com/billythegoat356), [loTus01](https://github.com/loTus04), and [BlueRed](https://github.com/CSM-BlueRed)
+> ساخته شده توسط [Billy](https://github.com/billythegoat356), [loTus01](https://github.com/loTus04), and [BlueRed](https://github.com/CSM-BlueRed) and [Thecode764](https://github.com/Thecode764)
 
 
 <img src="https://media.discordapp.net/attachments/888138903138213911/888139229681561681/pystylebanner.png"/> 
