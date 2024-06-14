@@ -76,7 +76,7 @@ print(Colorate.Color(Colors.blue, text, True))
 
 ## یک متن رنگی با افکت بسازید!
 <img src="https://media.discordapp.net/attachments/888138903138213911/888143816836653116/pystleHor.png">
-<p><i><strong>یک متن رنی با افکت بسازید</strong></i></p>
+<p><i><strong>یک متن رنگی با افکت بسازید</strong></i></p>
 <br>
 
 ```python
