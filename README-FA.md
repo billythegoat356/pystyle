@@ -1,4 +1,4 @@
-<h1 align="center">PyStyle</h1>
+<h1 align="center">پای استایل</h1>
 <br>
 <p>
   <img alt="نسخه" src="https://img.shields.io/badge/Version-2.9-blue.svg?cacheSeconds=2592000" />
