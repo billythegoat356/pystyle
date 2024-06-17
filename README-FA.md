@@ -3,7 +3,7 @@
 <p>
   <img alt="نسخه" src="https://img.shields.io/badge/Version-2.9-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/billythegoat356/pystyle/blob/main/README.md" target="_blank">
-    <img alt="مستندات" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+    <img alt="وضیعت مستندات" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
   <a href="https://github.com/billythegoat356/pystyle" target="_blank">
     <img alt="وضیعت توسعه" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
@@ -20,7 +20,7 @@
 > <br>
 > با الهام از **pyfade** و **pycenter**.
 > <br>
-> ساخته شده توسط [Billy](https://github.com/billythegoat356), [loTus01](https://github.com/loTus04), و [BlueRed](https://github.com/CSM-BlueRed) و [Thecode764](https://github.com/Thecode764)
+> ساخته شده توسط [Billy](https://github.com/billythegoat356), [loTus01](https://github.com/loTus04),  [BlueRed](https://github.com/CSM-BlueRed) و [Thecode764](https://github.com/Thecode764)
 
 
 <img src="https://media.discordapp.net/attachments/888138903138213911/888139229681561681/pystylebanner.png"/> 
