@@ -1,7 +1,7 @@
 <h1 align="center">PyStyle</h1>
 <br>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.5-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.9-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/billythegoat356/pystyle/blob/main/README.md" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -20,7 +20,7 @@
 > <br>
 > Inspired by **pyfade** and **pycenter**,
 > <br>
-> Developped by [Billy](https://github.com/billythegoat356), [loTus01](https://github.com/loTus04), and [BlueRed](https://github.com/CSM-BlueRed)
+> Developped by [Billy](https://github.com/billythegoat356), [loTus01](https://github.com/loTus04),  [BlueRed](https://github.com/CSM-BlueRed) and [Thecode764](https://github.com/Thecode764)
 
 
 <img src="https://media.discordapp.net/attachments/888138903138213911/888139229681561681/pystylebanner.png"/> 
@@ -293,6 +293,7 @@ System.Command("echo hello")
 👤 GitHub: [@**billythegoat356**](https://github.com/billythegoat356)<br>
 👤 GitHub: [@**loTus01**](https://github.com/loTus04)<br>
 👤 GitHub: [@**BlueRed**](https://github.com/CSM-BlueRed)<br>
+👤 GitHub: [@**Thecode764**](https://github.com/Thecode764)<br>
 
 ## 🤝 Contributing
 
@@ -304,3 +305,5 @@ Give a ⭐️ if this project helped you!
 
 
 ***
+## Translations
+[Persian](./README-FA.md)
